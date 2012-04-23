@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Dynamic Binding in C++ by matarz</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Dynamic Binding in C++</h1>
+        <h2>A proof of concept for using dynamic binding in c++</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/matarz/dynamic_binding_cpp/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/matarz/dynamic_binding_cpp/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/matarz/dynamic_binding_cpp" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <p><img src="http://img689.imageshack.us/img689/4967/20120423171542.jpg" alt="ScreenShot"></p>
+
+<p>This project was a proof of concept for using dynamic binding in c++. The <a href="http://web.cecs.pdx.edu/%7Ekarlaf/CS202_Fall09/Prog2.html">assignment</a> asked that we build a program that would manage at least three devices using one common interface. </p>
+
+<blockquote>
+<p>Pick three high tech devices that you frequently use. Instead of re-implementing the functionality for common overlapping features, wouldn’t a hierarchy be best to simulate their functionality? The best choices in technology would all have similar functionality, such as: turn on, turn off, run application, play/call,  go back, etc. Find the set of common functionality and pull it up to the common base class. Make the difference in the derived classes. &lt;</p>
+</blockquote>
+
+<p>And</p>
+
+<blockquote>
+<p>we will apply inheritance and pure polymorphism to the creation of our abstraction. In the main, use a pointer to a base class  which can point to objects of any type. Avoid using casting to solve this problem. Minimize your use of if/else (or switch) as well. Attempt to use pure polymorphism as much as possible. &lt;</p>
+</blockquote>
+
+<p>For similar devices, I picked three smartphones (droid, iphone, nokia-n73) due to their similar functionality. Classes that are specific for each device inherit the common class which is implemented in <a href="https://github.com/matarz/dynamic_binding_cpp/blob/master/device_ABC.h">device_ABC.h</a> and <a href="https://github.com/matarz/dynamic_binding_cpp/blob/master/device_ABC.cpp">device_ABC.cpp</a>. Most of the dynamic binding "magic" can be found in main.cpp. Here is a snippet of it: 
+<img src="http://img706.imageshack.us/img706/7205/20120423172159.jpg" alt="code0"></p>
+
+<p>The variable <em><strong>i</strong></em> in the above code is a pointer of type device_ABC (base class). It is then assigned one of the three derived classes (droid, iphpne, n73) based on user choice so we can use common function calls i.e <strong>i-&gt;check_status()</strong> or <strong>i-&gt;take_pic()</strong> for all three devices without having the need to use different pointers for each class.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
